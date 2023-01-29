@@ -85,18 +85,6 @@ Vue.prototype.gotoPath = function(path) {
 }
 // 路由快捷跳转封装 end
 
-// 全局统一异常处理，个性化自行在指定页面重写
-Vue.prototype.showException = function(err) {
-  console.log(err)
-  if (typeof (err) === 'string') {
-    this.$toast(err)
-  } else if (err.msg) {
-    this.$toast(err.msg)
-  } else {
-    this.$toast(err.message)
-  }
-}
-
 // 全局路由前置守卫
 router.beforeEach((to, from, next) => {
   // 百度统计 统一调用时 非统一调用根据页面写入统计
@@ -267,16 +255,44 @@ router.afterEach((to, from) => {
   }
 })
 
-// 全局引入按需引入UI库 vant
-import '@/plugins/element'
-// 引入全局样式
+// 按需引入 开始 注意打开 babel.config.js中的plugins
+// 全局引入按需引入UI库 element 如果存在兼容问题可以使用全局导入所有zip压缩后在300kb左右，按需导入最小150kb
+//import '@/plugins/element'
 
-// import 'vant/lib/index.less' // 需要先引入全局或局部后才能覆盖,当前文件夹位置决定css先后顺序 默认关闭，需要打开 需引入 less-loader@7.0.0
+// 引入全局样式
+//import 'element-ui/lib/theme-chalk/index.css';
+// 按需引入结束
+
+// 全局引入开始
+// 全局引入 ElementUI，注意屏蔽 @/plugins/element和屏蔽babel.config.js中的plugins ，由于使用时间，table等插件导致整体包较大所有通常直接全局引入组件 zip压缩后350kb左右，部分引入也在250kb左右
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+// 全局引入结束
 
 import '@/assets/css/index.scss'
 
-// 引入 vant 全局样式覆盖文件
+// 引入 element 全局样式覆盖文件
 import '@/assets/css/element-overwrite.scss'
+
+/**
+ * @param msg 提示消息
+ */
+Vue.prototype.$toast = function (msg){
+  this.$notify({title:'提示',message:msg})
+}
+
+// 全局统一异常处理，个性化自行在指定页面重写
+Vue.prototype.showException = function(err) {
+  console.log(err)
+  if (typeof (err) === 'string') {
+    this.$toast(err)
+  } else if (err.msg) {
+    this.$toast(err.msg)
+  } else {
+    this.$toast(err.message)
+  }
+}
 
 // filters
 import './filters/index'

@@ -34,7 +34,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.full-screen-page{
-  background-image: url("/test_cover.jpg");
-}
+
 </style>

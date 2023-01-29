@@ -1,8 +1,7 @@
 <!-- home/about -->
 <template>
-  <div class="page-container">
-
-    <div class="error-page">404 页面没有找到</div>
+  <div class="body-container">
+    404 页面没有找到
   </div>
 </template>
 

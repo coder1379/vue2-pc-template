@@ -1,6 +1,8 @@
 <!-- home/about -->
 <template>
-  <div class="page-container">home/About</div>
+  <div class="body-container">
+    about
+  </div>
 </template>
 
 <script>

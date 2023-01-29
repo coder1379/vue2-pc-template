@@ -1,7 +1,7 @@
 import { baseUrl, WXAPPID, baseApi } from '@/config'
 
 // 项目缓存前缀 防止重名
-export const productCachePrefix = 'vht-'
+export const productCachePrefix = 'v2pc-'
 
 export const serviceErrorMessage = '服务器连接异常，请尝试关闭后重新打开'
 

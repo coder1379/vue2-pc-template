@@ -588,7 +588,7 @@ package.json 删除如下代码
 #### 安装插件
 
 ```bash
-npm i babel-plugin-import -D
+yarn add babel-plugin-component -D
 ```
 
 在`babel.config.js` 设置
@@ -597,13 +597,11 @@ npm i babel-plugin-import -D
 // 对于使用 babel7 的用户，可以在 babel.config.js 中配置
 const plugins = [
   [
-    'import',
+    'component',
     {
-      libraryName: 'vant',
-      libraryDirectory: 'es',
-      style: true
-    },
-    'vant'
+      libraryName: 'element-ui',
+      styleLibraryName: "theme-chalk",
+    }
   ]
 ]
 module.exports = {
@@ -617,13 +615,10 @@ module.exports = {
 项目在 `src/plugins/vant.js` 下统一管理组件，用哪个引入哪个，无需在页面里重复引用
 
 ```javascript
-// 按需全局引入 vant组件
+// 按需全局引入 element组件
 import Vue from 'vue'
-import { Button, List, Cell, Tabbar, TabbarItem } from 'vant'
+import { Button } from 'element-ui'
 Vue.use(Button)
-Vue.use(Cell)
-Vue.use(List)
-Vue.use(Tabbar).use(TabbarItem)
 ```
 
 [▲ 回顶部](#top)

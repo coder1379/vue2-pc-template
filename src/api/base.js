@@ -2,7 +2,7 @@ import api from './index'
 import { baseApi } from '@/config'
 import request from '../utils/request'
 import { empty, getLocalCache, getToken, getUuid, gotoLogin, setLocalCache, setUserLoginInfo } from '../utils/common'
-import { Toast } from 'element-ui'
+/*import { Toast } from 'element-ui'*/
 
 /**
  * 基础接口模块
@@ -122,9 +122,9 @@ export function requestHandle(url, requestObj, option = {}) {
   // 不传递默认开启loading
   if (loading === true) {
     // loading
-    Toast.loading({
+    /*Toast.loading({
       forbidClick: true
-    })
+    })*/
   }
 
   requestObj.token = getToken()

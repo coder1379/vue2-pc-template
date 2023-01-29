@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container">
-    <div class="layout-header">
-      顶部
+  <div className="app-container">
+    <div className="layout-header">
+      会有中心顶部
     </div>
-    <div class="layout-content">
+    <div className="layout-content">
       <div v-if="$route.meta.keepAlive">
       </div>
       <keep-alive>
@@ -11,22 +11,18 @@
       </keep-alive>
       <router-view v-if="!$route.meta.keepAlive"/>
     </div>
-    <div class="layout-footer">
-      底部
+    <div className="layout-footer">
+      会有中心底部
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AppLayout',
+  name: 'MyLayout',
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>

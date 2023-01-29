@@ -1,14 +1,8 @@
 <!-- 登录 -->
 <template>
-  <div class="page-container">
-    <div class="header-container">
-
-    </div>
-
-    <div class="body-container">
-
-    </div>
+  <div class="body-container">
   </div>
+
 </template>
 
 <script>

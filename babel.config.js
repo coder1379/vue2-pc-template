@@ -2,21 +2,20 @@
 const IS_PROD = ['production', 'prod'].includes(process.env.VUE_APP_ENV)
 const plugins = [
   [
-    'import',
+    'component',
     {
-      libraryName: 'vant',
-      libraryDirectory: 'es',
-      style: true
-    },
-    'vant'
+      libraryName: 'element-ui',
+      styleLibraryName: "theme-chalk",
+
+    }
   ]
 ]
 // 去除 console.log
 if (IS_PROD) {
-  plugins.push('transform-remove-console')
+  // plugins.push('transform-remove-console')
 }
 
 module.exports = {
   presets: [['@vue/cli-plugin-babel/preset', { useBuiltIns: 'usage', corejs: 3 }]],
-  plugins
+  //plugins // 全局引入直接屏蔽
 }

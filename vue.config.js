@@ -42,6 +42,7 @@ console.log(IS_APP_PROD, 'env')
 // }
 
 module.exports = {
+  parallel:false,
   // publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
   publicPath: '/', // 署应用包时的基本 URL。  vue-router history模式使用 /为二级域名时使用 或 /web-root-name/ 二级目录时使用
   outputDir: 'dist', //  生产环境构建文件的目录

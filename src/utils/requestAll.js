@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Qs from 'qs'
-import { Toast } from 'vant'
+/*import { Toast } from 'element-ui'*/
 // 根据环境不同引入不同api地址
 import { baseApi } from '@/config'
 import { getToken, gotoLogin } from './common'
@@ -18,9 +18,9 @@ service.interceptors.request.use(
     // 不传递默认开启loading
     if (!config.hideloading) {
       // loading
-      Toast.loading({
+      /*Toast.loading({
         forbidClick: true
-      })
+      })*/
     }
 
     if (config.data) {
@@ -56,7 +56,7 @@ service.interceptors.request.use(
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    Toast.clear()
+    /*Toast.clear()*/
     const res = response.data
     if (res.code && res.code !== 200) {
       // 登录超时,重新登录
@@ -69,7 +69,7 @@ service.interceptors.response.use(
     }
   },
   error => {
-    Toast.clear()
+    /*Toast.clear()*/
     console.log('err' + error) // for debug
     return Promise.reject(error)
   }

@@ -4,7 +4,7 @@
  */
 export const constantRouterMap = [
   {
-    // 首页layout模板及内嵌的页面
+    // 首页layout模板及内嵌的页面 如果有相同的顶部或者底部可以采用
     path: '/',
     component: () => import('@/views/layouts/index'),
     redirect: '/home',
@@ -17,21 +17,21 @@ export const constantRouterMap = [
         path: '/home',
         name: 'Home',
         component: () => import('@/views/home/index'),
-        meta: { title: '首页', keepAlive: true, excludeScroll: true }
+        meta: { title: '首页', keepAlive: false}
       },
       {
         // demo 页面 用于开发快速复制和组件使用查看
         path: '/dev-demo',
         name: 'DevDemo',
         component: () => import('@/views/demo/index'),
-        meta: { title: 'Demo', keepAlive: true, visitorCheck: true }
+        meta: { title: 'Demo', keepAlive: false, visitorCheck: true }
       },
       {
         // demo-list 页面 用于开发快速复制和组件使用查看
         path: '/dev-demo/copy-base-list',
         name: 'DevDemoList',
         component: () => import('@/views/demo/copy-base-list'),
-        meta: { title: 'DemoList', keepAlive: true, visitorCheck: true }
+        meta: { title: 'DemoList', keepAlive: false, visitorCheck: true }
       },
       {
         // demo-page 全屏活动页
@@ -39,32 +39,32 @@ export const constantRouterMap = [
         name: 'All-page-test',
         component: () => import('@/views/demo/all-page-test'),
         meta: { title: 'all-page-test', visitorCheck: true }
-      },
+      }
+    ]
+  },
+  {
+    // user-layout 用户页面及子页面 页面带有头部 如果有单调的会员中心顶部或者底部可以使用
+    path: '/my-layout',
+    component: () => import('@/views/layouts/my'),
+    redirect: '/my',
+    meta: {
+      title: 'my-layout',
+      keepAlive: false
+    },
+    children: [
       {
         path: '/my',
         name: 'My',
         component: (resolve) => require(['@/views/my/index'], resolve), // 懒加载页面示例
         // component: () => import('@/views/my/index'),
         meta: { title: '我的', visitorCheck: true }
-      }
-    ]
-  },
-  {
-    // footer-layout页面及子页面 页面带有头部
-    path: '/footer-layout',
-    component: () => import('@/views/layouts/footer'),
-    redirect: '/home',
-    meta: {
-      title: 'footer-layout',
-      keepAlive: false
-    },
-    children: [
+      },
       {
         // my setting
         path: '/my/set',
         name: 'MySet',
         component: () => import('@/views/my/set'),
-        meta: { title: '设置', keepAlive: true, loginCheck: true }
+        meta: { title: '设置', keepAlive: false, loginCheck: true }
       }
     ]
   },
