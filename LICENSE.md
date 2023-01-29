@@ -1,6 +1,6 @@
-The vue-h5-template framework is free software. It is released under the terms of the following BSD 3-Clause License.
+The vue2-pc-template framework is free software. It is released under the terms of the following BSD 3-Clause License.
 
-Copyright (c) 2021 by vue-h5-template (https://github.com/coder1379/vue-h5-template)
+Copyright (c) 2021 by vue2-pc-template (https://github.com/coder1379/vue2-pc-template)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
