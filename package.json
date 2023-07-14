@@ -16,6 +16,8 @@
     "core-js": "^3.6.4",
     "element-ui": "^2.0.0",
     "lodash": "^4.17.15",
+    "js-base64": "^3.6.1",
+    "moment": "^2.29.4",
     "regenerator-runtime": "^0.13.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -36,6 +38,7 @@
     "sass-loader": "^8.0.2",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "vue-template-compiler": "^2.6.11",
+    // "sockjs-client": "^1.5.1", // 兼容ie11 时需要升级版本的包, 有些环境下有用到,具体是否使用可以感觉具体情况
     "webpack-bundle-analyzer": "^3.8.0"
   }
 }

@@ -29,6 +29,100 @@ export function deleteLocalCache(name) {
   return localStorage.removeItem(productCachePrefix + name)
 }
 
+// 判断是否为空 包含对象数组 类似php empty
+export function empty(parm) {
+  if (parm == null || parm == undefined || parm == 0 || parm == '' || parm == 'undefined' || parm == ' ' || parm == 'null' || /^[ ]+$/.test(parm) || JSON.stringify(parm) === '{}' || JSON.stringify(parm) === '[]') {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 是否为空验证
+export function isNull(parm) {
+  if (parm == '' || parm == 'undefined' || parm == undefined || parm == null || parm == ' ' || parm == 'null') {
+    return true
+  } else {
+    return false
+  }
+}
+
+/**
+ * base64 字符串url传输安全处理,解密
+ * @param base64Str
+ * @returns {string|*}
+ */
+export function urlsafeB64Decode(base64Str) { // base64 需要替换
+  if (isNull(base64Str)) {
+    return ''
+  } else {
+    let base64 = base64Str.replace(/-/g, '+').replace(/_/g, '/')
+    while (base64.length % 4 !== 0) {
+      base64 += '='
+    }
+    return base64
+  }
+}
+
+/**
+ * base64 字符串url传输安全加密
+ * @param baseStr
+ * @returns {*}
+ */
+export function urlsafeB64Encode(baseStr) { // base64 需要替换
+  return baseStr.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '')
+}
+
+/**
+ * 获取url中的get参数
+ * @param name
+ * @returns {string|null}
+ */
+export function getQueryString(name) {
+  const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+  const r = window.location.search.substr(1).match(reg)
+  if (r != null) return unescape(r[2])
+  return null
+}
+
+// url转对象
+export function urlToObject(urlStr) {
+  // 注意这个函数 url里面的k不能只有1位,例如a,b这样
+  let url = ''
+  if (urlStr.indexOf('?') > -1) {
+    url = urlStr.split('?')[1]
+  } else {
+    url = urlStr
+  }
+
+  const dataObj = {}
+  if (!isNull(url)) {
+    url = url.split('&') // url中去掉&全部变成“a=b” “c=d” “e=f”的模式
+    for (let i = 0; i < url.length; i++) {
+      const postion = url[i].indexOf('=')
+      if (postion > -1) {
+        let key = ''
+        if ((postion - 1) > 0) {
+          key = url[i].slice(0, postion)
+        }
+        let val = ''
+        if ((postion + 1) < url[i].length) {
+          val = url[i].slice(postion + 1)
+        }
+
+        if (key != '') {
+          dataObj[key] = val
+        }
+      } else {
+        if (url[i] != '') {
+          dataObj[url[i]] = ''
+        }
+      }
+    }
+  }
+  return dataObj
+}
+
 // 设置本地token
 export function setToken(val) {
   return setLocalCache('token', val)
@@ -110,23 +204,6 @@ export function gotoLogin(backPath) {
   return true
 }
 
-// 判断是否为空 包含对象数组 类似php empty
-export function empty(parm) {
-  if (parm == null || parm == undefined || parm == 0 || parm == '' || parm == 'undefined' || parm == ' ' || parm == 'null' || /^[ ]+$/.test(parm) || JSON.stringify(parm) === '{}' || JSON.stringify(parm) === '[]') {
-    return true
-  } else {
-    return false
-  }
-}
-
-// 是否为空验证
-export function isNull(parm) {
-  if (parm == '' || parm == 'undefined' || parm == undefined || parm == null || parm == ' ' || parm == 'null') {
-    return true
-  } else {
-    return false
-  }
-}
 
 // 是否为微信内
 export function isWeiXin() {

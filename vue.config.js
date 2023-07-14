@@ -108,6 +108,9 @@ module.exports = {
     //   config.externals = externals
     // }
   },
+  /*transpileDependencies: [ // 兼容ie11的编译 地方,例如有base64的代码或其他等
+   // /[/\\]node_modules[/\\](.+?)?js-base64[/\\]base64(.*)/,
+  ],*/
 
   chainWebpack: config => {
     config.plugins.delete('preload') // TODO: need test
@@ -187,11 +190,11 @@ module.exports = {
             test: /[\\/]node_modules[\\/]/,
             priority: 10
           },
-          vantUI: {
+          /*vantUI: {
             name: 'chunk-vantUI', // 单独将 vantUI 拆包
             priority: 20, // 数字大权重到，满足多个 cacheGroups 的条件时候分到权重高的
             test: /[\\/]node_modules[\\/]_?vant(.*)/
-          }
+          }*/
         }
       })
       config.optimization.runtimeChunk('single')
